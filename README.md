@@ -15,7 +15,7 @@ For this project [Ansible](https://docs.ansible.com/) was used with the provided
 
 [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
-## Installation or Getting Started
+## Getting Started
 
     git clone https://github.com/ensec-apollods/f5-ansible-bigiq.git
     cd f5-ansible-bigiq
