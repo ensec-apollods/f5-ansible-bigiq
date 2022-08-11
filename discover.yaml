@@ -1,0 +1,42 @@
+---
+- name: Discover a new device and import config
+  bigiq_device_discovery:
+    device_address: "{{ ip }}"
+    
+    # for full device re-discovery
+    # force: yes
+    
+    # APM
+    #
+    # Sets the conflict resolution policy for Access module apm objects.
+    # Only used when the apm module is specified.
+    # Choices:
+    #   - use_bigiq
+    #   - use_bigip
+    #   - keep_version
+    #
+    access_conflict_policy: use_bigiq
+    
+    # Access group name cannot be modified once it is set
+    access_group_name: ag_test
+
+    # List of modules to be discovered and imported into the device.
+    # These modules must be provisioned on the target device, otherwise operation will fail.
+    # The ltm module must always be specified when performing discovery or re-discovery of the the device.
+    # When asm or afm are specified, the shared_security module also needs to be declared.
+    # Choices:
+    #   - ltm
+    #   - asm
+    #   - apm
+    #   - afm
+    #   - dns
+    #   - websafe
+    #   - security_shared
+    modules:
+      - ltm
+      - apm
+      - dns
+      - asm
+      - security_shared
+    provider: "{{ provider }}"
+  delegate_to: localhost
