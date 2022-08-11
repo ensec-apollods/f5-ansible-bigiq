@@ -1,0 +1,22 @@
+- name: F5 BIGIQ re-discover and re-import
+  hosts: all
+  gather_facts: false
+
+  vars:
+    provider:
+      password: <password>
+      server: <big-iq-ip-address>
+      user: <username>
+      validate_certs: no
+      server_port: "443"
+
+  tasks:
+    - name: Discover
+      include_tasks: discover.yaml
+      with_items:
+        # specifiy hosts to discover here as a list
+        # example:
+        # - 192.0.2.10
+        # - 192.0.2.20
+      loop_control:
+        loop_var: ip
